@@ -1,0 +1,156 @@
+# If you come from bash you might have to change your $P;ATH.
+# export PATH=$HOME/bin:/usr/local/bin:$PATH
+
+# Path to your oh-my-zsh installation.
+
+# Set name of the theme to load. Optionally, if you set this to "random"
+# it'll load a random theme each time that oh-my-zsh is loaded.
+# See https://github.com/robbyrussell/oh-my-zsh/wiki/Themes
+ZSH_THEME="robbyrussell"
+
+plugins=(git autojump)
+
+export ZSH=/Users/liuyuanzhe/.oh-my-zsh
+source $ZSH/oh-my-zsh.sh
+set -o vi
+#alias
+#cd
+alias cdTuiQQ='cd ~/code/tui_qq/tui_qq_git/'
+alias cdAddev='cd ~/code/tui_addev/tui_addev_git'
+alias cdLumen='cd ~/code/lumen'
+alias cdPhpConf='cd /usr/local/etc/php/7.0'
+alias cdNginxConf='cd /usr/local/etc/nginx/'
+alias cdPowerLog='cd /data/logs/tfp_demo/'
+alias cdAdbusiness='cd /Users/liuyuanzhe/code/ad_business'
+alias cdGo='/Users/liuyuanzhe/code/go/src'
+alias cdIotConnsvr='/Users/liuyuanzhe/code/iot_service_go_workspace/src/git.code.oa.com/iot/qcloud_iot_server-iot_go_proj/conn.svr'
+alias cdIotQcloud="cd /Users/liuyuanzhe/code/iot_service_go_workspace/src/git.code.oa.com/iot/qcloud_iot_server-iot_go_proj/"
+alias cdIotWorkspace="/Users/liuyuanzhe/code/iot_service_go_workspace_v2"
+alias cdIotRule="/Users/liuyuanzhe/code/iot_service_go_workspace_v2/src/git.code.oa.com/iot/iot_service_go/rule.svr/"
+alias cdAPI="/Users/liuyuanzhe/code/iot_server-api"
+alias cdLoraProxy="cd /Users/liuyuanzhe/code/lora-proxy"
+alias cdStatisticSvr="cd /Users/liuyuanzhe/code/statistics-svr;export CONFIG_FILE=/Users/liuyuanzhe/code/statistics-svr/config.yaml;gows1.11"
+alias cd10BillionServer="cd /Users/liuyuanzhe/code/10billionhongbaos/src/github.com/10billionhongbaos/server"
+alias gobuild10billionServer="cd10BillionServer;go build ."
+
+alias cd10BillionClient="cd /Users/liuyuanzhe/code/10billionhongbaos/src/github.com/10billionhongbaos/client"
+alias gobuild10billionClient="cd10BillionClient;go build ."
+
+alias cdRule="cd /Users/liuyuanzhe/code/iot_hub_trunk/iothub_rule_svr/"
+
+alias cdKafka='cd /Users/liuyuanzhe/software/kafka_2.11-0.9.0.1'
+
+
+alias scpStatSvr="scp ~/Documents/iot_stat_service.so iothub-cvm2:/home/oicq/spp_iotcloud_stat_svr/client/bin"
+# spotlight 关闭索引，否则消耗资源太多, 发热严重
+alias stopSpotlight="sudo mdutil -a -i off"
+
+#haproxy
+alias haproxyStart="haproxy -f /usr/local/etc/haproxy.cfg"
+
+#docker 
+alias dockerRunGo="docker run -dit --network=bridge --privileged -v /Users/liuyuanzhe/code:/home -p 2345:2345 -p 8883:8883 -p 8884:8884 -p 5004:5004 --name iothub golang:1.8.4"
+
+alias dockerRunEs='docker run --name es -p 9200:9200 -p 9300:9300 -e "discovery.type=single-node" -e ES_JAVA_OPTS="-Xms1g -Xmx1g" -v /Users/liuyuanzhe/software/es/config/elasticsearch.yml:/usr/share/elasticsearch/config/elasticsearch.yml -v /Users/liuyuanzhe/software/es/data:/usr/share/elasticsearch/data docker.elastic.co/elasticsearch/elasticsearch:5.6.4'
+alias dockerRunKibana='docker run --name kibana -e "ELASTICSEARCH_URL=http://10.73.49.55:9200"  -p 5601:5601 docker.elastic.co/kibana/kibana:5.6.4'
+
+alias dockerRunRuleTest='cd /Users/liuyuanzhe/code/rpc-test/rule-test;docker run --rm -d -v /Users/liuyuanzhe/.gvm/pkgsets/go1.12/global:/gopath -v "$PWD":/usr/src/myapp -e "GOPATH=/gopath" -w /usr/src/myapp --name  centos7-compile-env centos7-compile-env:0.3'
+alias dockerExecRuleTest='docker exec -it centos7-compile-env bash'
+
+alias dockerExecGo="docker exec -it iothub /bin/bash"
+alias dockerLoginCcs="sudo docker login --username=100004181306 ccr.ccs.tencentyun.com" # SRNgH0OG1akn
+alias dockerLoginCcs96="sudo docker login --username=96666666666 ccr.ccs.tencentyun.com" #U79^2]*S<PY=
+alias rulePushCcs="time /Users/liuyuanzhe/code/iot_service_go_workspace_v2/bin/build.v2/rule.svr.build.sh push"
+
+alias statisticPushCcs="time /Users/liuyuanzhe/code/statistics-svr/build/statistic.svr.build.sh pus"
+
+alias dockerRunGoVendor="docker run -dit --name go1.11-vendor ccr.ccs.tencentyun.com/iot-dev/go1.11-vendor"
+alias dockerExecGoVendor="docker exec -it go1.11-vendor /bin/ash"
+
+alias vendorPushCcs="/Users/liuyuanzhe/code/lora-proxy/build/go1.11-verdor.build.sh push"
+alias loraproxyPushCcs="/Users/liuyuanzhe/code/lora-proxy/build/lora-proxy.svr.build.sh push"
+
+#cmd
+alias runDocker='docker run -ti ubuntu:14.04'
+alias showListen='lsof -n -P -i TCP -s TCP:LISTEN'
+alias showUdpListen='lsof -n -P -i UDP'
+alias showProxy='echo $http_proxy;echo $https_proxy'
+alias showIp='ifconfig |grep "inet "'
+#nginx
+alias cdNginx='cd /usr/local/etc/nginx'
+alias nginxStart='sudo nginx'
+alias nginxStop='sudo nginx -s stop'
+alias nginxReload='sudo nginx -s reload'
+#php-fpm
+#alias phpfpmStart='sudo php-fpm -c /usr/local/etc/php/7.0/php.ini -y /usr/local/etc/php/7.0/php-fpm.conf'
+alias phpfpmStart='sudo php70-fpm start'
+alias phpfpmReload='sudo php70-fpm reload'
+alias phpfpmStop='sudo php70-fpm stop'
+alias unsetProxy='unset http_proxy;unset https_proxy'
+alias setProxy='export http_proxy=http://dev-proxy.oa.com:8080/;export https_proxy=http://dev-proxy.oa.com:8080/'
+
+#redis
+alias redisServerStart="nohup redis-server /etc/redis.conf &"
+# anaconda
+alias chpy27='source activate py27'
+alias chpy36='source activate py36'
+
+#postgres
+alias pgStart='pg_ctl -D /usr/local/var/postgres -l /usr/local/var/postgres/server.log start'
+alias pgConn='psql -U mqtt -d lora_proxy'
+
+# misc
+alias showPs="ps aux|grep "
+alias mysqlCon="mysql -hlocalhost -uroot -proot -P3306"
+alias http-server="cd /Users/liuyuanzhe/software/http-server;/usr/local/bin/http-server . "
+
+# 启动命令
+#chPy27
+
+# 拉取远程到本地，并更新本地和远程的对应关系，可以清除已删除分支
+alias gitFetchP='git fetch -p'
+
+alias sshAliyun='ssh azhe@182.92.176.225'
+
+alias protoGo='protoc --proto_path=./ --go_out=plugins=grpc:. '
+
+
+[[ -s /Users/liuyuanzhe/.autojump/etc/profile.d/autojump.sh ]] && source /Users/liuyuanzhe/.autojump/etc/profile.d/autojump.sh
+
+autoload -U compinit && compinit -u
+
+#export CONFIG_FILE=/Users/liuyuanzhe/code/iot_service_go_workspace_v2/src/git.code.oa.com/iot/iot_service_go/rule.svr/config_dev.yaml
+export no_proxy=localhost,.oa.com 
+
+export JAVA_HOME=/Library/Java/JavaVirtualMachines/jdk1.8.0_131.jdk/Contents/Home
+export HIVE_HOME=/Users/liuyuanzhe/software/apache-hive-1.2.2-bin/
+
+export HADOOP_HOME=/Users/liuyuanzhe/software/hadoop-2.8.0
+#export GOPATH=/Users/liuyuanzhe/code/iot_service_go_workspace:/Users/liuyuanzhe/code/GoBase/trunk
+#export GOHOME=/usr/local/Cellar/go/1.8.3
+export PIG_HOME=/Users/liuyuanzhe/software/pig-0.17.0
+export PIG_CLASSPATH=${HADOOP_HOME}/etc/hadoop
+
+export PATH=$PATH:~/anaconda/bin/:~/bin/:/Users/liuyuanzhe/code/ad_business/vendor/phpspec/phpspec/bin/:$HADOOP_HOME/bin:$HIVE_HOME/bin:/usr/local/bin/:/usr/local/sbin/:/usr/local/mysql-5.7.18-macos10.12-x86_64/bin/:$GOPATH/bin/:/Users/liuyuanzhe/software/apache-jmeter-3.3/bin:$PIG_HOME/bin/:/Users/liuyuanzhe/.gvm/bin
+
+# gvm
+alias gows1.11="gvm use go1.11"
+alias gows1.8="gvm use 1.8.4;gvm pkgset create --local;gvm pkgset use --local"
+alias gowsRule="gvm use 1.8.4;gvm pkgset create --local;gvm pkgset use --local;export GOPATH=/Users/liuyuanzhe/code/iot_hub_trunk/iothub_rule_svr"
+
+alias gvmCreateLocal="gvm pkgset create --local"
+alias gvmUseLocal="gvm pkgset use --local"
+
+alias hubpskD010="hub_psk.py IEJDCY51TQ d010 'vC5ANh+w2ORw3DXzBcRwUg=='"
+
+source ~/proxysetting.zsh
+# gvm setting
+[[ -s "$HOME/.gvm/scripts/gvm" ]] && source "$HOME/.gvm/scripts/gvm"
+
+# nvm
+export NVM_DIR="$HOME/.nvm"
+. "/usr/local/opt/nvm/nvm.sh"
+
+# config.yaml
+export CONFIG_FILE=/Users/liuyuanzhe/code/lora-proxy/config.yaml
+
